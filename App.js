@@ -1,16 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState ,useEffect } from 'react';
+import './App.css';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-const BillApp = () => {
+
+function BillStore() {
+  const [bills, setBills] = useState(() => {
+    const storedBills = localStorage.getItem('bills');
+    return storedBills ? JSON.parse(storedBills) : [];
+  });
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [amount, setAmount] = useState('');
-  const [bills, setBills] = useState([]);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState('');
+
 
   useEffect(() => {
-    const savedBills = localStorage.getItem('bills');
-    if (savedBills) {
-      setBills(JSON.parse(savedBills));
+    const storedBills = JSON.parse(localStorage.getItem('bills'));
+    if (storedBills) {
+      setBills(storedBills);
     }
   }, []);
 
@@ -31,63 +38,60 @@ const BillApp = () => {
   };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImage(file);
+    setImage(URL.createObjectURL(e.target.files[0]));
   };
-
 
   const handleAddBill = () => {
-    // Validate input fields
-    if (!title || !amount || !image || !date) {
-      alert('Please fill in all fields.');
-      return;
+    if (title && date && amount && image) {
+      setBills([...bills, { title, date, amount, image }]);
+      setTitle('');
+      setDate('');
+      setAmount('');
+      setImage('');
+    } else {
+      alert('Please fill all the fields');
     }
-
-    // Create a new bill object
-    const newBill = {
-      title,
-      amount,
-      date,
-      image: URL.createObjectURL(image)
-    };
-
-    // Add the new bill to the bills state
-    setBills([...bills, newBill]);
-
-    // Clear input fields after adding a new bill
-    setTitle('');
-    setAmount('');
-    setImage('');
-    setDate('');
   };
 
-  const handleDelete = (index) => {
+  const handleDeleteBill = (index) => {
     const updatedBills = [...bills];
     updatedBills.splice(index, 1);
     setBills(updatedBills);
   };
-  
 
   return (
-    <div>
-      <h1>Bill Application</h1>
-      <div>
-        <input type="text" placeholder="Title" value={title} onChange={handleTitleChange} />
-        <input type="date" placeholder="Date" value={date} onChange={handleDateChange} />
-        <input type="number" placeholder="Amount" value={amount} onChange={handleAmountChange} />
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-        
-        
-        <button onClick={handleAddBill}>Add Bill</button>
-      </div>
-      <div>
+    
+    <div className="bill-store-container">
+    <div className="input-container">
+      <h2>Add New Bill</h2>
+      <input type="text" placeholder="Title" value={title} onChange={handleTitleChange} />
       
-
-
-
-      </div>
+      
+      <DatePicker label="Basic date picker" input type="date" placeholder="Date" value={date} onChange={handleDateChange}/>
+      <input type="number" placeholder="Amount" value={amount} onChange={handleAmountChange} />
+      <input type="file" onChange={handleImageChange} />
+      {/* { <img src={image} alt="Bill" className="preview-image" style={{width:'200px', height:'400px'} }/>} */}
+      <button onClick={handleAddBill}>Add Bill</button>
     </div>
-  );
-};
 
-export default BillApp;
+    <div className="bill-list-container">
+      <h2>Bill List</h2>
+      <ul className="bill-list">
+        {bills.map((bill, index) => (
+          <li key={index} className="bill-item">
+            <h3>{bill.title}</h3>
+            <p>Date: {bill.date}</p>
+            <p>Amount: ${bill.amount}</p>
+            <p>Receipt:<img src={bill.image} alt="Bill" className="bill-image" /></p>
+            <button onClick={() => handleDeleteBill(index)} className="delete-button">Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  
+    
+  );
+}
+
+export default BillStore;
