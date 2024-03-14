@@ -1,0 +1,91 @@
+/* Style for the container */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Style for the form inputs */
+.input-container {
+  margin-bottom: 10px;
+}
+
+.input-container input[type="text"],
+.input-container input[type="date"],
+.input-container input[type="number"] {
+  /* width: calc(100% - 12px); */
+  padding: 6px;
+  margin-top: 6px;
+  margin-right: 6px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style for the file input */
+.input-container input[type="file"] {
+  margin-top: 6px;
+}
+
+/* Style for the add button */
+.add-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+/* Style for the bill list */
+.bill-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.bill-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.bill-item h3 {
+  margin-top: 0;
+}
+
+.bill-item p {
+  margin-bottom: 5px;
+}
+
+.bill-item img {
+  max-width: 100px;
+  display: block;
+  margin-top: 10px;
+}
+
+/* Style for the delete button */
+.delete-button {
+  display: inline-block;
+  padding: 6px 10px;
+  margin-top: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
