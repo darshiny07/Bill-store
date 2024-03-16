@@ -1,6 +1,9 @@
 import React, { useState ,useEffect } from 'react';
 import './App.css';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Navbar from './Navbar';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 function BillStore() {
@@ -60,30 +63,44 @@ function BillStore() {
   };
 
   return (
-    
-    <div className="bill-store-container">
-    <div className="input-container">
+   
+    <div>
+<Navbar/>
+
+  <div className='Container'>
+ 
+      
+<div className='input-container'>
       <h2>Add New Bill</h2>
       <input type="text" placeholder="Title" value={title} onChange={handleTitleChange} />
-      
-      
-      <DatePicker label="Basic date picker" input type="date" placeholder="Date" value={date} onChange={handleDateChange}/>
+      < input type="date" placeholder="Date" value={date} onChange={handleDateChange}/>
       <input type="number" placeholder="Amount" value={amount} onChange={handleAmountChange} />
-      <input type="file" onChange={handleImageChange} />
-      {/* { <img src={image} alt="Bill" className="preview-image" style={{width:'200px', height:'400px'} }/>} */}
-      <button onClick={handleAddBill}>Add Bill</button>
-    </div>
+      <input type="file" onChange={handleImageChange} /> <br />
+      <Button variant="contained" color="success" onClick={handleAddBill}>Add Bill</Button>
+      
+      </div>
 
-    <div className="bill-list-container">
+      </div>
+   
+ 
+    <div>
+
+
       <h2>Bill List</h2>
+
+
+
       <ul className="bill-list">
         {bills.map((bill, index) => (
           <li key={index} className="bill-item">
             <h3>{bill.title}</h3>
             <p>Date: {bill.date}</p>
             <p>Amount: ${bill.amount}</p>
-            <p>Receipt:<img src={bill.image} alt="Bill" className="bill-image" /></p>
-            <button onClick={() => handleDeleteBill(index)} className="delete-button">Delete</button>
+            <p>Receipt:<img src={bill.image} alt="Bill"  /></p>
+            
+            <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDeleteBill(index)}>
+        Delete
+      </Button>
           </li>
         ))}
       </ul>
