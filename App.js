@@ -1,6 +1,8 @@
 import React, { useState ,useEffect } from 'react';
 import './App.css';
-import Navbar from './Navbar';
+import Footer from './Footer';
+
+// import Navbar from './Navbar';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -65,7 +67,7 @@ function BillStore() {
   return (
    
     <div>
-<Navbar/>
+{/* <Navbar/> */}
 
   <div className='Container'>
  
@@ -76,6 +78,7 @@ function BillStore() {
       < input type="date" placeholder="Date" value={date} onChange={handleDateChange}/>
       <input type="number" placeholder="Amount" value={amount} onChange={handleAmountChange} />
       <input type="file" onChange={handleImageChange} /> <br />
+      
       <Button variant="contained" color="success" onClick={handleAddBill}>Add Bill</Button>
       
       </div>
@@ -83,28 +86,30 @@ function BillStore() {
       </div>
    
  
-    <div>
+   
 
 
-      <h2>Bill List</h2>
+      <h2 className='Bill-title'>Bill List</h2>
 
 
-
-      <ul className="bill-list">
+      <div className='list-container'>
+      <ol className="bill-list">
         {bills.map((bill, index) => (
           <li key={index} className="bill-item">
             <h3>{bill.title}</h3>
             <p>Date: {bill.date}</p>
             <p>Amount: ${bill.amount}</p>
-            <p>Receipt:<img src={bill.image} alt="Bill"  /></p>
+            <p>Receipt :</p>
+             <img src={bill.image} alt="Bill" width={"200px"} height={"200px"} /> <br></br>
             
-            <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDeleteBill(index)}>
+            <Button variant="outlined" className=" delete"startIcon={<DeleteIcon />} onClick={() => handleDeleteBill(index)}>
         Delete
       </Button>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
+    <Footer/>
   </div>
   
     

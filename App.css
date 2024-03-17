@@ -1,12 +1,12 @@
 
 
 
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    width: 300px; /* Adjust width as needed */
-    margin: 0 auto; /* Center horizontally */
-  }
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px; /* Adjust width as needed */
+  margin: 0 auto; /* Center horizontally */
+}
 
 
 .input-container input[type="text"],
@@ -14,25 +14,76 @@
 .input-container input[type="date"],
 .input-container input[type="file"],
 .input-container button {
-  margin-bottom: 10px; /* Adjust spacing between inputs */
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+margin-bottom: 10px; /* Adjust spacing between inputs */
+padding: 9px;
+border: 1px solid #ccc;
+border-radius: 4px;
+width: 400px;
 }
 
 .input-container input[type="file"] {
-  padding: 6px; /* Adjust padding for file input */
+padding: 6px; /* Adjust padding for file input */
 }
 
 .input-container button {
-  background-color: #28a745; /* Green color */
-  color: white;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  cursor: pointer;
+background-color: #28a745; /* Green color */
+color: white;
+border: none;
+border-radius: 4px;
+padding: 10px 20px;
+cursor: pointer;
 }
 
 .input-container button:hover {
-  background-color: #218838; /* Darker green color on hover */
+background-color: #218838; /* Darker green color on hover */
+}
+
+
+.Bill-title {
+  
+  text-align: center;
+  background-color: rgb(0, 69, 75);
+  padding: 20px;
+  color: white;
+}
+
+
+
+.bill-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; 
+  /* width: 500px;
+  height: 400px; */
+  
+}
+
+.bill-item {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1 0 200px; /* Each item takes a minimum width of 200px and grows to fill remaining space */
+  max-width: 300px; /* Set maximum width to control wrapping */
+}
+
+.bill-item h3 {
+  margin-top: 0;
+}
+
+.bill-item p {
+  margin: 5px 0;
+}
+
+.bill-item img {
+  display: block;
+  margin-top: 10px;
+  /* width: 100%; 
+  height: auto;  */
+  width: 200px;
+  height: 200px ;
+}
+
+.delete {
+  margin-top: 10px;
 }

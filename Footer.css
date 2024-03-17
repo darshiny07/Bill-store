@@ -1,0 +1,12 @@
+.footer-body{
+    background-color: rgb(4, 43, 55);
+    color: white;
+    padding: 20px;
+    margin: 0 20px 0 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.footer-description{
+    text-align: center;
+    /* padding: 10px; */
+}
