@@ -27,4 +27,3 @@ With its user-friendly interface and robust functionality, the Bill Store applic
 }
 
 export default Footer
-
