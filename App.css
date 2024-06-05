@@ -23,6 +23,7 @@ width: 400px;
 
 .input-container input[type="file"] {
 padding: 6px; /* Adjust padding for file input */
+width: 400px;
 }
 
 .input-container button {
@@ -42,7 +43,7 @@ background-color: #218838; /* Darker green color on hover */
 .Bill-title {
   
   text-align: center;
-  background-color: rgb(0, 69, 75);
+  background-color: rgb(4, 43, 55);;
   padding: 20px;
   color: white;
 }
@@ -53,6 +54,7 @@ background-color: #218838; /* Darker green color on hover */
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start; 
+  list-style: none;
   /* width: 500px;
   height: 400px; */
   

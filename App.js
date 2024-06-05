@@ -2,7 +2,7 @@ import React, { useState ,useEffect } from 'react';
 import './App.css';
 import Footer from './Footer';
 
-// import Navbar from './Navbar';
+import Navbar from './Navbar';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -67,7 +67,7 @@ function BillStore() {
   return (
    
     <div>
-{/* <Navbar/> */}
+<Navbar/>
 
   <div className='Container'>
  
@@ -79,7 +79,7 @@ function BillStore() {
       <input type="number" placeholder="Amount" value={amount} onChange={handleAmountChange} />
       <input type="file" onChange={handleImageChange} /> <br />
       
-      <Button variant="contained" color="success" onClick={handleAddBill}>Add Bill</Button>
+      <Button variant="contained" color="success" onClick={handleAddBill}><strong>Add Bill</strong></Button>
       
       </div>
 
